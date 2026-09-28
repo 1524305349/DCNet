@@ -138,10 +138,7 @@ def cal_accuracy(y_pred, y_true):
 
 
 def print_args(args):
-    """
-    分类、美化输出参数配置
-    """
-    # 定义参数分组
+
     groups = {
         "Basic Config": ['is_training', 'model_id', 'model', 'des'],
         "Data Loader": ['data', 'root_path', 'data_path', 'features', 'target', 'freq', 'checkpoints'],

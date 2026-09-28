@@ -3,7 +3,7 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
-model_name=GLDCformer
+model_name=DCNet
 
 if [ ! -d "./logs/$model_name" ]; then
     mkdir ./logs/$model_name
@@ -11,10 +11,10 @@ fi
 
 seq_len=96
 
-root_path_name=./dataset/ETT-small/
-data_path_name=ETTh2.csv
-model_id_name=ETTh2
-data_name=ETTh2
+root_path_name=./dataset/solar/
+data_path_name=solar.txt
+model_id_name=Solar
+data_name=Solar
 
 pred_len=96
 python -u run.py \
@@ -26,21 +26,22 @@ python -u run.py \
   --data $data_name \
   --seq_len $seq_len \
   --pred_len $pred_len \
-  --enc_in 7 \
-  --cycle 24 \
+  --enc_in 137 \
+  --cycle 144 \
   --use_prior_init 0 \
   --d_model 512 \
-  --train_epochs 30 \
+  --d_ff 512 \
+  --train_epochs 20 \
   --patience 3 \
-  --dropout 0.5 \
+  --dropout 0.1 \
   --batch_size 32 \
-  --learning_rate 0.0001 \
+  --learning_rate 0.0005 \
   --exp_name 'init' \
   --ffn_layers 1 \
   --e_layers 2 \
-  --bias 0.5 \
-  --n_norm 0 \
-  --itr 1 >logs/$model_name/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
+  --bias 0.0 \
+  --use_norm 0 \
+  --itr 1 >logs/$model_name/$model_name'_'$model_id_name'_'$seq_len.log
 
 pred_len=192
 python -u run.py \
@@ -52,21 +53,22 @@ python -u run.py \
   --data $data_name \
   --seq_len $seq_len \
   --pred_len $pred_len \
-  --enc_in 7 \
-  --cycle 24 \
-  --use_prior_init 1 \
+  --enc_in 137 \
+  --cycle 144 \
+  --use_prior_init 0 \
   --d_model 512 \
-  --train_epochs 30 \
+  --d_ff 512 \
+  --train_epochs 20 \
   --patience 3 \
-  --dropout 0.5 \
+  --dropout 0.1 \
   --batch_size 32 \
-  --learning_rate 0.0001 \
+  --learning_rate 0.0005 \
   --exp_name 'init' \
-  --ffn_layers 1 \
+  --ffn_layers 2 \
   --e_layers 2 \
-  --bias 1.0 \
-  --n_norm 0 \
-  --itr 1 >logs/$model_name/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
+  --bias 0.0 \
+  --use_norm 0 \
+  --itr 1 >logs/$model_name/$model_name'_'$model_id_name'_'$seq_len.log
 
 pred_len=336
 python -u run.py \
@@ -78,21 +80,22 @@ python -u run.py \
   --data $data_name \
   --seq_len $seq_len \
   --pred_len $pred_len \
-  --enc_in 7 \
-  --cycle 24 \
-  --use_prior_init 0 \
+  --enc_in 137 \
+  --cycle 144 \
+  --use_prior_init 1 \
   --d_model 512 \
-  --train_epochs 30 \
+  --d_ff 512 \
+  --train_epochs 20 \
   --patience 3 \
-  --dropout 0.5 \
+  --dropout 0.1 \
   --batch_size 32 \
-  --learning_rate 0.0001 \
+  --learning_rate 0.0005 \
   --exp_name 'init' \
-  --ffn_layers 2 \
-  --e_layers 2 \
+  --ffn_layers 1 \
+  --e_layers 1 \
   --bias 0.5 \
-  --n_norm 0 \
-  --itr 1 >logs/$model_name/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
+  --use_norm 0 \
+  --itr 1 >logs/$model_name/$model_name'_'$model_id_name'_'$seq_len.log
 
 pred_len=720
 python -u run.py \
@@ -104,18 +107,19 @@ python -u run.py \
   --data $data_name \
   --seq_len $seq_len \
   --pred_len $pred_len \
-  --enc_in 7 \
-  --cycle 24 \
+  --enc_in 137 \
+  --cycle 144 \
   --use_prior_init 0 \
   --d_model 512 \
-  --train_epochs 30 \
+  --d_ff 512 \
+  --train_epochs 20 \
   --patience 3 \
-  --dropout 0.5 \
+  --dropout 0.1 \
   --batch_size 32 \
-  --learning_rate 0.0001 \
+  --learning_rate 0.0005 \
   --exp_name 'init' \
-  --ffn_layers 2 \
-  --e_layers 2 \
-  --bias 1.0 \
-  --n_norm 0 \
-  --itr 1 >logs/$model_name/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
+  --ffn_layers 1 \
+  --e_layers 1 \
+  --bias 0.5 \
+  --use_norm 0 \
+  --itr 1 >logs/$model_name/$model_name'_'$model_id_name'_'$seq_len.log

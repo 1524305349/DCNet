@@ -1,4 +1,4 @@
-name: FLDCformer
+name: DCNet
 channels:
   - pytorch
   - nvidia

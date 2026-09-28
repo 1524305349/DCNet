@@ -3,7 +3,7 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
-model_name=GLDCformer_no_FFN
+model_name=DCNet_no_FFN
 
 if [ ! -d "./logs/$model_name" ]; then
     mkdir ./logs/$model_name
@@ -12,8 +12,8 @@ fi
 seq_len=96
 
 root_path_name=./dataset/PEMS/
-data_path_name=PEMS08.npz
-model_id_name=PEMS08
+data_path_name=PEMS04.npz
+model_id_name=PEMS04
 data_name=PEMS
 
 for pred_len in 12 24 48 96
@@ -27,12 +27,12 @@ do
       --data $data_name \
       --seq_len $seq_len \
       --pred_len $pred_len \
-      --enc_in 170 \
+      --enc_in 307 \
       --cycle 288 \
       --d_model 512 \
       --d_ff 512 \
       --train_epochs 30 \
-      --patience 4 \
+      --patience 3 \
       --dropout 0.1 \
       --batch_size 32 \
       --learning_rate 0.001 \

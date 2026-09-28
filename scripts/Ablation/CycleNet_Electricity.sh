@@ -3,7 +3,7 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
-model_name=GLDC_CycleNet
+model_name=DC_CycleNet
 
 if [ ! -d "./logs/$model_name" ]; then
     mkdir ./logs/$model_name

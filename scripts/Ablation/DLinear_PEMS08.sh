@@ -3,7 +3,7 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
-model_name=Dual_GLDC_DLinear
+model_name=Dual_DC_DLinear
 
 if [ ! -d "./logs/$model_name" ]; then
     mkdir ./logs/$model_name

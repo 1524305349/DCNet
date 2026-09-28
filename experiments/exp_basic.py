@@ -1,7 +1,7 @@
 import os
 import torch
-from model import (iTransformer, TQNet, GLDCformer, GLDCformer_no_GLDC, GLDCformer_no_FFN, GLDCformer_no_all,
-                   GLDCDLinear, Dual_GLDC_DLinear, GLDC_CycleNet)
+from model import (iTransformer, TQNet, DCNet, DCNet_no_DC, DCNet_no_FFN, DCNet_no_all,
+                   DCDLinear, Dual_DC_DLinear, DC_CycleNet)
 
 class Exp_Basic(object):
     def __init__(self, args):
@@ -9,13 +9,13 @@ class Exp_Basic(object):
         self.model_dict = {
             'iTransformer': iTransformer,
             'TQNet': TQNet,
-            'GLDCformer': GLDCformer,
-            'GLDCformer_no_GLDC': GLDCformer_no_GLDC,
-            'GLDCformer_no_FFN': GLDCformer_no_FFN,
-            'GLDCformer_no_all': GLDCformer_no_all,
-            'GLDCDLinear': GLDCDLinear,
-            'Dual_GLDC_DLinear': Dual_GLDC_DLinear,
-            'GLDC_CycleNet': GLDC_CycleNet
+            'DCNet': DCNet,
+            'DCNet_no_DC': DCNet_no_DC,
+            'DCNet_no_FFN': DCNet_no_FFN,
+            'DCNet_no_all': DCNet_no_all,
+            'DCDLinear': DCDLinear,
+            'Dual_DC_DLinear': Dual_DC_DLinear,
+            'DC_CycleNet': DC_CycleNet
         }
         self.device = self._acquire_device()
         self.model = self._build_model().to(self.device)
